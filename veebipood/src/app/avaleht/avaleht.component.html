@@ -1,0 +1,14 @@
+<!-- tooted = [.1.,.2.,.3.] 
+t = .1.  "Coca cola"
+t = .2.  "Fanta"
+t = .3.  "Sprite"
+-->
+
+<div *ngFor="let t of tooted">
+   <div *ngIf="t.aktiivne">
+    <div>Nimi: {{ t.nimi }}</div>
+    <div>Hind: {{ t.hind}} </div>
+    <div>Kategooria: coca</div>
+    <button (click)="lisaOstukorvi(t)">Lisa {{ t.nimi }} ostukorvi</button>
+   </div>
+</div>

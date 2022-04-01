@@ -1,0 +1,40 @@
+<div>
+    <button *ngIf="ostukorviTooted.length > 0"(click)="tyhjendaTooted()">Tühjenda ostukorv</button>
+</div>
+<div *ngIf="ostukorviTooted.length >= 2">Ostukorvis on {{ostukorviTooted.length}} eset</div>
+<div *ngIf="ostukorviTooted.length === 1">Ostukorvis on {{ostukorviTooted.length}} ese</div>
+
+<div *ngIf="ostukorviTooted.length === 0">Ostukorv on tühi</div>
+
+<div *ngFor="let t of ostukorviTooted">
+    <span>Toode: {{t.nimi}}</span>
+    <span> {{ t.hind }} €</span>
+    <button (click)="kustutaToode(t)">x</button>
+    <button (click)="lisaToode(t)">+</button>
+</div>
+
+<div *ngIf="ostukorviTooted.length > 0">Kokku {{ koguSumma }} €</div>
+
+
+<!-- <div *ngIf="boolean" > {{ string }} </div>
+<div *ngIf="number > 100"> {{ number }} </div>
+<div  *ngIf="string"> {{ boolean}} </div>
+
+<div> {{ string + string }} </div>
+<div> {{ number + number }} </div>
+<div> {{ boolean + string}} </div>
+
+<div  *ngIf="string.length > 0">SEDA NÄITAN KUI STRING ON TÜHI</div>
+
+<button (click)="korrutaKahega()">Korruta number kahega</button>
+
+<button (click)="muudaBoolean()">Muuda boolean false-ks</button>
+
+<button (click)="tyhjendaString()">Muuda string tühjaks</button>
+
+<button (click)="muudaBooleantrue()">Muuda boolean Trueks-ks</button> -->
+
+
+
+
+
