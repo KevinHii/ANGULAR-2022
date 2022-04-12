@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TreeError } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,9 +11,9 @@ export class OstukorvComponent implements OnInit {
 ostukorviTooted: any[] = [];
 koguSumma= 0;
 
-constructor() { 
-    console.log("pannakse Ostukorv constructor käima");
-  }
+
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     console.log("pannakse Ostukorv ngOnInit käima");
@@ -71,7 +72,35 @@ constructor() {
 
   }
 
-}
+
+  maksma() {
+    const makseAndmed= {
+      
+        "api_username": "92ddcfab96e34a5f",
+        "account_name": "EUR3D1",
+        "amount": this.koguSumma,
+        "order_reference": Math.random() * 999999,
+        "nonce": "a569b7f7" + new Date() + Math.random() * 999999,
+        "timestamp": new Date(),
+        "customer_url": "https://angular-04-2022.web.app/"
+        }
+        const headers = {
+          headers: new HttpHeaders(
+            {
+              "Authorization": 
+              "Basic OTJkZGNmYWI5NmUzNGE1Zjo4Y2QxOWU5OWU5YzJjMjA4ZWU1NjNhYmY3ZDBlNGRhZA=="
+            }
+          )
+        };
+        this.http.post<any>("https://igw-demo.every-pay.com/api/v4/payments/oneoff",
+         makseAndmed, 
+         headers).subscribe(tagastus => location.href = tagastus.payment_link);
+
+        
+    
+  }
+
+}   
 // string = " Sõnaline muutuja"; //"22s" + "33a" --> "22s33a"
 // number = 11; //numbriline muutuja
 // boolean = true; //kahendväärtus: rangelt true või false

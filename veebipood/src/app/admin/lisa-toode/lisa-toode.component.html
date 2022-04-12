@@ -1,1 +1,13 @@
-<p>lisa-toode works!</p>
+<button routerLink="/admin">Tagasi</button>
+
+
+<form (ngSubmit)="Lisa(lisamiseVorm)" #lisamiseVorm="ngForm"><br>
+<label>Nimetus</label><br>
+<input ngModel name="nimi" type="text"> <br>
+<label>Hind</label><br>
+<input ngModel name="hind" type="number"> <br>
+<label>Aktiivne</label><br>
+<input ngModel name="aktiivne" type="checkbox"> <br>
+<button>Sisesta</button>
+</form>
+

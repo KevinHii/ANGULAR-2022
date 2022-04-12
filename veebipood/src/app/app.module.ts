@@ -9,6 +9,9 @@ import { LisaToodeComponent } from './admin/lisa-toode/lisa-toode.component';
 import { MuudaToodeComponent } from './admin/muuda-toode/muuda-toode.component';
 import { VaataTooteidComponent } from './admin/vaata-tooteid/vaata-tooteid.component';
 import { AdminKoduComponent } from './admin/admin-kodu/admin-kodu.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,11 @@ import { AdminKoduComponent } from './admin/admin-kodu/admin-kodu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

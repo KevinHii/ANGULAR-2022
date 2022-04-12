@@ -1,1 +1,11 @@
-<p>vaata-tooteid works!</p>
+<button routerLink="/admin">Tagasi</button>
+
+<div *ngFor="let toode of tooted">
+   <div>{{ toode.nimi }}</div>
+   <div>{{ toode.hind }}</div>
+   <div>{{ toode.aktiivne }}</div>
+   <button routerLink="/admin/muuda/{{toode.nimi.replaceAll(' ', '-').toLowerCase().replaceAll('õ','o')}}">Muuda</button>
+   <button (click)="kustutaToode(toode)">Kustuta</button>
+   <br> <br>
+</div>
+
