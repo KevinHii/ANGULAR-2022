@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core'; //import node_modules seest
 
 
@@ -10,21 +11,27 @@ export class AvalehtComponent implements OnInit {
 
   // massiiv / list / array 
             // 5st elemendist
-tooted = [{nimi: "Coca cola", hind: 2, aktiivne: true}, 
-{nimi: "Fanta", hind: 3, aktiivne: false},
-{nimi: "Sprite", hind: 2.5, aktiivne: true}, 
-{nimi: "Vichy", hind: 4, aktiivne: true}, 
-{nimi: "Vitamin well", hind: 5, aktiivne: true}, 
-];
+tooted: any= []
 
   
 
-  constructor() {
+  constructor(private http: HttpClient) {
     console.log("pannakse Avaleht constructor käima");
    }
 
   ngOnInit(): void {
     console.log("pannakse Avaleht ngOnInit käima");
+    this.http.get<any>(
+      "https://angular-04-2022-default-rtdb.europe-west1.firebasedatabase.app//tooted.json")
+            .subscribe(tootedFB => {
+      const uusMassiiv = [];
+      for (const key in tootedFB) {
+        uusMassiiv.push(tootedFB[key]);
+        }
+        this.tooted = uusMassiiv;
+
+      
+    })
   }
 
 lisaOstukorvi(toode: any){

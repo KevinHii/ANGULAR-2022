@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LisaToodeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   Lisa(vorm: any) {
-    console.log(vorm);
-    console.log(vorm.value.nimi);
-    console.log(vorm.value.hind);
-    console.log(vorm.value.aktiivne);
+
+    if (vorm.valid) {
+      this.http.post("https://angular-04-2022-default-rtdb.europe-west1.firebasedatabase.app//tooted.json", 
+      vorm.value).subscribe();
+    }
+    // console.log(vorm);
+    // console.log(vorm.value.nimi);
+    // console.log(vorm.value.hind);
+    // console.log(vorm.value.aktiivne);
   }
 }

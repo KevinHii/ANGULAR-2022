@@ -11,6 +11,7 @@ import { VaataTooteidComponent } from './admin/vaata-tooteid/vaata-tooteid.compo
 import { AdminKoduComponent } from './admin/admin-kodu/admin-kodu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { YksikToodeComponent } from './yksik-toode/yksik-toode.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     LisaToodeComponent,
     MuudaToodeComponent,
     VaataTooteidComponent,
-    AdminKoduComponent
+    AdminKoduComponent,
+    YksikToodeComponent
   ],
   imports: [
     BrowserModule,
