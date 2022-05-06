@@ -15,6 +15,8 @@ import { EditProductComponent } from './admin/edit-product/edit-product.componen
 import { ViewProductComponent } from './admin/view-product/view-product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CategoryComponent } from './admin/category/category.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddProductComponent,
     EditProductComponent,
     ViewProductComponent,
-    NavbarComponent
+    NavbarComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -39,7 +44,7 @@ import { NavbarComponent } from './navbar/navbar.component';
                 deps: [HttpClient]
             }
         })
-
+        
     
   ],
   providers: [],

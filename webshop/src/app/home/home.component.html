@@ -5,3 +5,11 @@
 <button class="btn btn-danger">PUNANE</button>
 <button class="btn btn-warning">KOLLANE</button>
 <button class="btn btn-secondary">HALL</button> -->
+
+
+<div *ngFor="let product of products">
+    <img src="{{product.imgSrc}}" alt="">
+    <div>{{product.name}}</div>
+    <div>{{product.price}}</div>
+    <button (click)="onAddToCart(products)">Lisa {{product.name}} ostukorvi </button>
+</div>
