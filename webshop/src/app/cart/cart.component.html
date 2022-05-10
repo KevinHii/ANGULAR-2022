@@ -1,5 +1,21 @@
-<div *ngFor="let cartProduct of cartProducts">
-    <div>{{ cartProduct.product.name }}</div>
-    <div>{{ cartProduct.product.price }}</div>
+<div class="cart-item" *ngFor="let cartProduct of cartProducts">
+    <img class="cart-item-pic" src="{{cartProduct.product.imgSrc}}" alt="">
+    <div class="cart-item-name">{{ cartProduct.product.name }}</div>
+    <div class="cart-item-price">{{ cartProduct.product.price }}</div>
     <div>{{ cartProduct.product.quantity }}</div>
 </div>
+
+<select 
+[(ngModel)]="selectedParcelMachine" 
+(ngModelChange)="onParcelMachineSelected()"
+*ngIf="!selectedParcelMachine"
+>
+<option value="">Vali pakiautomaat</option>
+    <option  *ngFor="let machine of parcelMachines" value="{{machine.NAME}}">{{machine.NAME}}</option>
+</select>
+
+<div *ngIf="selectedParcelMachine">
+<div>Valitud pakiautomaat: {{ selectedParcelMachine }}</div>
+<button (click)="onUnselectedParcelMachine()">x</button>
+</div>
+

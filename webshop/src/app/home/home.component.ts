@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
+declare let Email: any;
+import 'src/assets/smtp.js';
+import { runInThisContext } from 'vm';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,6 +21,7 @@ export class HomeComponent implements OnInit {
         this.products.push(response[key]);
       }
     });
+   
   }
 
   onAddToCart(productClicked: any) {
@@ -30,8 +35,31 @@ export class HomeComponent implements OnInit {
     cartItems[index].quantity++;
 
   } else {
+    const parcelMachineIndex = cartItems.findIndex(element => element.product.id = 11122333);
+    if (parcelMachineIndex >= 0) {
+      cartItems.splice(parcelMachineIndex,0,{product: productClicked, quantity: 1});
+    }
     cartItems.push({ product: productClicked, quantity: 1 });
   }
   sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
   }
+
+  muutuja: any
+  pealkiri: any
+
+  // SHOP KAUSTA LISADA!!!!!!
+  onSendEmail () {
+    Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "khiiemae@gmail.com",
+      Password : "F4A3257B96FAB1BCB1C9B61C11F8B2677065",
+      To : 'britta.liias98@gmail.com',
+      From : "khiiemae@gmail.com",
+      Subject : this.pealkiri,
+      Body : "Klient kirjutas: " + this.muutuja + " . Saadetud: " + new Date()
+  }).then(
+    (message: any) => alert(message)
+  );
+  }
+ 
 }
