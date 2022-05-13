@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
     const cartItemsSS = sessionStorage.getItem("cartItems");
     if (cartItemsSS) {
       this.cartProducts = JSON.parse(cartItemsSS);
-    }
+    } console.log(this.cartProducts)
     this.http.get<any>("https://www.omniva.ee/locations.json").subscribe(res => 
       this.parcelMachines = res);
       // subscribe --- viib päringu läbi, teeb asünkroonseks (lubab koodil edasi minna)

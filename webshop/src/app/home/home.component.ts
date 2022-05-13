@@ -13,15 +13,28 @@ import 'src/assets/smtp.js';
 export class HomeComponent implements OnInit {
   products: any[] = [];
   dbUrl= "https://webshio04-22-default-rtdb.europe-west1.firebasedatabase.app/products.json"
-  constructor(private http: HttpClient) { }
+  categories: string [] = [];
+  selectedCategory = "";
+  
 
+  constructor(private http: HttpClient) { }
+  
+  
   ngOnInit(): void {
     this.http.get<any>(this.dbUrl).subscribe(response => {
       for (const key in response) {
         this.products.push(response[key]);
+       
       }
+      this.categories= this.products.map(element => element.category);
+      this.categories= [...new Set(this.categories)];
     });
    
+  }
+
+  onFilterByCategory(category: string) {
+    this.selectedCategory= category;
+    this.products = this.products.filter(element => element.category === category)
   }
 
   onAddToCart(productClicked: any) {

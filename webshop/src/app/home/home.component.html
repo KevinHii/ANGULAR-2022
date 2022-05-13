@@ -6,10 +6,20 @@
 <button class="btn btn-warning">KOLLANE</button>
 <button class="btn btn-secondary">HALL</button> -->
 
+<div (click)="onFilterByCategory('')"
+[ngClass]="{'category-selected': '' === selectedCategory}">Kõik kategooriad</div>
+
+<div *ngFor="let category of categories"
+(click)="onFilterByCategory(category)"
+[ngClass]="{'category-selected': category === selectedCategory}"
+>{{category}} </div>
+
+
+
 
 <div *ngFor="let product of products">
     <img src="{{product.imgSrc}}" alt="">
     <div>{{product.name}}</div>
     <div>{{product.price}}</div>
-    <button (click)="onAddToCart(products)">Lisa {{product.name}} ostukorvi </button>
+    <button (click)="onAddToCart(product)">Lisa {{product.name}} ostukorvi </button>
 </div>

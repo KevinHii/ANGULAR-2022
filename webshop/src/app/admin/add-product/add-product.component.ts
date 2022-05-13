@@ -23,6 +23,8 @@ export class AddProductComponent implements OnInit {
       this.categories = newArray;
     })
   }
+
+  
 onSubmit(addProductForm: NgForm) {
   this.http.post(this.dbUrl, addProductForm.value).subscribe();
   addProductForm.reset();
